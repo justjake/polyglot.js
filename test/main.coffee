@@ -8,12 +8,16 @@ describe "t", ->
     "hi_name_welcome_to_place": "Hi, %{name}, welcome to %{place}!"
     "name_your_name_is_name": "%{name}, your name is %{name}!"
     "empty_string": ""
+    "numeric_value": 5
 
   beforeEach ->
     @polyglot = new Polyglot({phrases:phrases})
 
   it "should translate a simple string", ->
     @polyglot.t("hello").should.equal("Hello")
+
+  it "should translate numeric values", ->
+    @polyglot.t("numeric_value").should.equal(5)
 
   it "should return the key if translation not found", ->
     @polyglot.t("bogus_key").should.equal("bogus_key")
